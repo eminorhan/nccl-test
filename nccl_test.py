@@ -94,7 +94,7 @@ def benchmark_all_reduce(tensor_size_mb, num_warmup, num_iters, rank, world_size
 
 def main():
     parser = argparse.ArgumentParser(description="nccl dist.all_reduce() benchmark")
-    parser.add_argument('--size', type=int, default=60000, help='Tensor size in MB to be reduced.')
+    parser.add_argument('--size', type=int, default=90000, help='Tensor size in MB to be reduced.')
     parser.add_argument('--warmup', type=int, default=1, help='Number of warm-up iterations.')
     parser.add_argument('--iters', type=int, default=5, help='Number of timed iterations.')
     args = parser.parse_args()
