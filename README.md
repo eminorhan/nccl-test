@@ -24,4 +24,7 @@ Run a quick test to benchmark the speed of your `pytorch` + `nccl`/`ncclx` setup
 - `torch.float16`
 - `torch.bfloat16`
 
+### Glitches
+
+- I could not get `torchcomms` to work properly with `torchrun` on SLURM yet.
 
