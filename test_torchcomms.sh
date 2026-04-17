@@ -3,12 +3,12 @@
 #SBATCH --account=stf218-arch
 #SBATCH --partition=batch
 #SBATCH --nodes=8
-#SBATCH --cpus-per-task=288
-#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=72
+#SBATCH --ntasks-per-node=4
 #SBATCH --gpus-per-node=4
 #SBATCH --time=00:10:00
-#SBATCH --job-name=nccl_test
-#SBATCH --output=nccl_test_%A_%a.out
+#SBATCH --job-name=test_torchcomms
+#SBATCH --output=test_torchcomms_%A_%a.out
 #SBATCH --array=0
 
 # activate venv
@@ -26,10 +26,13 @@ export TRITON_CACHE_DIR="/lustre/blizzard/stf218/scratch/emin/triton"
 export PYTORCH_KERNEL_CACHE_PATH="/lustre/blizzard/stf218/scratch/emin/pytorch_kernel_cache"
 export GPUS_PER_NODE=4
 
+export NCCL_COLLTRACE=0
+export NCCL_CTRAN_BACKENDS="NVL,SOCKET"
+
 # set network
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 export MASTER_PORT=3442
 
-srun torchrun --nnodes $SLURM_NNODES --nproc_per_node 4 --max_restarts 1 --node_rank $SLURM_NODEID --rdzv_id 101 --rdzv_backend c10d --rdzv_endpoint "$MASTER_ADDR:$MASTER_PORT" ./nccl_test.py
+srun python ./test_torchcomms.py
 
 echo "Done"
