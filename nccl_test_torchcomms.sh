@@ -2,7 +2,7 @@
 
 #SBATCH --account=stf218-arch
 #SBATCH --partition=batch
-#SBATCH --nodes=2
+#SBATCH --nodes=8
 #SBATCH --cpus-per-task=72
 #SBATCH --ntasks-per-node=4
 #SBATCH --gpus-per-node=4
@@ -27,8 +27,6 @@ export PYTORCH_KERNEL_CACHE_PATH="/lustre/blizzard/stf218/scratch/emin/pytorch_k
 export GPUS_PER_NODE=4
 
 export NCCL_COLLTRACE=0
-export NCCL_SCUBA_DISABLE=1
-export NCCL_TUNER_DISABLE=1
 export NCCL_CTRAN_BACKENDS="NVL,SOCKET"
 
 # set network
