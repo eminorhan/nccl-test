@@ -1,6 +1,6 @@
 ### `nccl`/`ncclx` benchmark
 
-Run a quick test to benchmark the speed of your `pytorch` + `nccl`/`ncclx` setup for distributed training.
+Run a quick test to benchmark the speed of your `pytorch` + `nccl`/`ncclx` setup for distributed training. Mostly written by Gemini 3.1 Pro.
 
 ### Supported features
 
@@ -23,6 +23,10 @@ Run a quick test to benchmark the speed of your `pytorch` + `nccl`/`ncclx` setup
 - `torch.float32`
 - `torch.float16`
 - `torch.bfloat16`
+
+### Requirements
+
+The only requirement is to have a working PyTorch installation. If you would like to test the [`torchcomms`](https://github.com/meta-pytorch/torchcomms) library, you will need to have that installed as well (see the instructions in the link). 
 
 ### Glitches
 
